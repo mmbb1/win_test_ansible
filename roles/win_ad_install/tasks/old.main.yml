@@ -1,3 +1,12 @@
+
+- name: Copy the PS script to install the AD forest
+  win_template:
+    src: InstallADForest.ps1.j2
+    dest: c:\InstallADForest.ps1
+
+- name: Execute the PS script to install the AD forest
+  win_shell: c:\InstallADForest.ps1 >> C:\InstallADForest.txt
+
 - name: Install AD-Domain-Services feature
   win_feature:
     name: AD-Domain-Services
